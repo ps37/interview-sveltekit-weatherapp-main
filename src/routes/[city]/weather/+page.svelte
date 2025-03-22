@@ -1,5 +1,6 @@
 <script lang="ts">
 	import ErrorComponent from '$lib/components/ErrorComponent.svelte';
+	import WeatherInfoComponent from '$lib/components/WeatherInfoComponent.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -12,9 +13,7 @@
 	{#await weather}
 		<p>Loading weather...</p>
 	{:then weather}
-		<h2>{weather.name}</h2>
-		<span>Temperature: {weather.temp}°C</span>
-		<span>{weather.description}</span>
+		<WeatherInfoComponent weather={weather}></WeatherInfoComponent>
 	{:catch error}
 		<ErrorComponent error={error}></ErrorComponent>
 	{/await}
